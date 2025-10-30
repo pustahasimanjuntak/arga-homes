@@ -267,11 +267,6 @@
                                             <span class="badge bg-info">
                                                 <i class="bi bi-check-circle"></i> Terkirim
                                             </span><br>
-                                            <a href="https://wa.me/{{ $appointment->customer_phone }}" 
-                                               target="_blank" 
-                                               class="btn btn-sm btn-success mt-1">
-                                                <i class="bi bi-whatsapp"></i> Cek WA
-                                            </a>
                                         @else
                                             <span class="badge bg-secondary">Belum Dikirim</span>
                                         @endif

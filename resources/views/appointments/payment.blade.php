@@ -87,7 +87,7 @@
 
                     <!-- Action Buttons -->
                     <div class="d-flex justify-content-between mt-4">
-                        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20mengirim%20bukti%20transfer%20untuk%20appointment%20atas%20nama%20{{ urlencode($appointment->customer_name) }}" 
+                        <a href="https://wa.me/6282167893019?text=Halo,%20saya%20ingin%20mengirim%20bukti%20transfer%20untuk%20appointment%20atas%20nama%20{{ urlencode($appointment->customer_name) }}" 
                            target="_blank" 
                            class="btn btn-success">
                             <i class="bi bi-whatsapp"></i> Kirim Bukti via WhatsApp

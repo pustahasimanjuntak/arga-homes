@@ -22,7 +22,17 @@
                     <p class="text-muted small">Sign in to your account</p>
                 </div>
 
+                <!-- Card Body -->
                 <div class="card-body px-5 pb-5">
+                    
+                    <!-- Success Message -->
+                    @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show">
+                        <i class="bi bi-check-circle-fill"></i> {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    @endif
+
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -109,17 +119,6 @@
                     </form>
                 </div>
             </div>
-
-            {{-- <!-- Demo Accounts Info -->
-            <div class="card mt-3 bg-light border-0">
-                <div class="card-body text-center">
-                    <small class="text-muted">
-                        <strong>Demo Accounts:</strong><br>
-                        Admin: admin@argahomes.com / admin123<br>
-                        User: user@test.com / user123
-                    </small>
-                </div>
-            </div> --}}
         </div>
     </div>
 </div>
