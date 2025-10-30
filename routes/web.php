@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function () {
 Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::post('/appointments/{id}/confirm', [AdminController::class, 'confirm'])->name('appointments.confirm');
+    Route::post('/appointments/{id}/confirm-payment', [AppointmentController::class, 'confirmPayment'])->name('appointments.confirm-payment');
     Route::post('/appointments/{id}/cancel', [AdminController::class, 'cancel'])->name('appointments.cancel');
     
     Route::resource('pricelists', AdminPricelistController::class);

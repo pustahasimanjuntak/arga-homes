@@ -21,7 +21,7 @@ class AdminPricelistController extends Controller
 
     public function create()
     {
-        return view('admin.pricelists.create');
+        return view('admin.pricelist.create');
     }
 
     public function store(Request $request)
@@ -42,7 +42,7 @@ class AdminPricelistController extends Controller
     public function edit($id)
     {
         $pricelist = Pricelist::findOrFail($id);
-        return view('admin.pricelists.edit', compact('pricelist'));
+        return view('admin.pricelist.edit', compact('pricelist'));
     }
 
     public function update(Request $request, $id)

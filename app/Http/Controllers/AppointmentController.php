@@ -11,12 +11,11 @@ class AppointmentController extends Controller
 {
     public function __construct()
     {
-        // Semua route di controller ini butuh login
         $this->middleware('auth');
     }
 
     /**
-     * Tampilkan form buat bikin appointment berdasarkan pricelist.
+     * Tampilkan form buat appointment
      */
     public function create($pricelistId)
     {
@@ -25,7 +24,7 @@ class AppointmentController extends Controller
     }
 
     /**
-     * Simpan data appointment baru.
+     * Simpan appointment baru
      */
     public function store(Request $request)
     {
@@ -60,22 +59,21 @@ class AppointmentController extends Controller
     }
 
     /**
-     * Halaman pembayaran appointment.
+     * Halaman pembayaran
      */
     public function payment($id)
-{
-    $appointment = \App\Models\Appointment::with('pricelist')->findOrFail($id);
+    {
+        $appointment = Appointment::with('pricelist')->findOrFail($id);
 
-    if ($appointment->user_id !== auth()->id()) {
-        abort(403, 'Akses ditolak.');
+        if ($appointment->user_id !== Auth::id()) {
+            abort(403, 'Akses ditolak.');
+        }
+
+        return view('appointments.payment', compact('appointment'));
     }
 
-    return view('appointments.payment', compact('appointment'));
-}
-
-
     /**
-     * Konfirmasi kalau user udah kirim bukti pembayaran.
+     * Konfirmasi user sudah kirim bukti pembayaran
      */
     public function confirmPayment($id)
     {
@@ -87,16 +85,15 @@ class AppointmentController extends Controller
 
         $appointment->update([
             'payment_sent' => true,
-            'status'       => 'waiting_confirmation',
         ]);
 
         return redirect()
             ->route('appointments.status', $appointment->id)
-            ->with('success', 'Bukti pembayaran dikirim. Tunggu konfirmasi dari admin.');
+            ->with('success', 'Bukti pembayaran telah dikonfirmasi. Silakan tunggu konfirmasi admin.');
     }
 
     /**
-     * Lihat status appointment & pembayaran.
+     * Lihat status appointment
      */
     public function status($id)
     {
@@ -110,13 +107,13 @@ class AppointmentController extends Controller
     }
 
     /**
-     * Tampilkan semua appointment milik user login.
+     * Tampilkan semua appointment milik user
      */
     public function myAppointments()
     {
         $appointments = Appointment::with('pricelist')
             ->where('user_id', Auth::id())
-            ->latest()
+            ->orderBy('created_at', 'desc')
             ->get();
 
         return view('appointments.my-appointments', compact('appointments'));

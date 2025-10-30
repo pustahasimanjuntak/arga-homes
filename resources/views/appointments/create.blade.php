@@ -5,8 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header bg-primary text-white text-center py-4">
+                    <!-- Logo -->
+                    <svg width="60" height="60" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="mb-3">
+                        <path d="M50 15 L85 80 L70 80 L50 50 L30 80 L15 80 Z" fill="#fff"/>
+                        <path d="M50 38 L62 60 L50 60 Z" fill="rgba(102, 126, 234, 0.8)"/>
+                    </svg>
                     <h4 class="mb-0"><i class="bi bi-calendar-plus"></i> Buat Appointment</h4>
+                    <p class="mb-0 mt-2 small">Isi form di bawah untuk membuat janji temu</p>
                 </div>
                 <div class="card-body">
                     <!-- Info Layanan -->
@@ -83,6 +89,26 @@
                             @enderror
                         </div>
 
+                        <!-- Makanan & Minuman -->
+                        <div class="alert alert-info">
+                            <h6 class="alert-heading mb-3">
+                                <i class="bi bi-cup-hot"></i> Pesan Makanan & Minuman
+                            </h6>
+                            
+                            <div id="foodsContainer">
+                                <div class="mb-3">
+                                    <label class="form-label">Isi Catatan untuk memesan makanan dan Minuman (Opsional)</label>
+                                    <div id="foodList" class="row g-3">
+                                        <!-- Foods akan dimuat via JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="selectedFoodsCart" class="mt-3">
+                                <!-- Selected items akan tampil di sini -->
+                            </div>
+                        </div>
+
                         <div class="d-flex justify-content-between">
                             <a href="{{ route('home') }}" class="btn btn-secondary">
                                 <i class="bi bi-arrow-left"></i> Kembali
@@ -97,4 +123,5 @@
         </div>
     </div>
 </div>
+
 @endsection
